@@ -36,33 +36,56 @@ class WelcomeScreen extends StatelessWidget {
                     ),
 
                     // Botão de Entrar / Login
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => const LoginPage()),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 255, 128, 0),
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 18,
-                          vertical: 10,
+                    Flexible(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const LoginPage(),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(
+                            255,
+                            255,
+                            128,
+                            0,
+                          ),
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 18,
+                            vertical: 10,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          elevation: 0,
                         ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        elevation: 0,
-                      ),
-                      child: const Text(
-                        'Entrar',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
+                        child: const Text(
+                          'Entrar ou Cadastrar',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
+                  ],
+                ),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Row(
+                  children: [
+                    _buildNavTab(title: 'Acesso e Elevação', onTap: () {}),
+                    const SizedBox(width: 24),
+                    _buildNavTab(title: 'Concretagem', onTap: () {}),
+                    const SizedBox(width: 24),
+                    _buildNavTab(title: 'Ferramentas Elétricas', onTap: () {}),
                   ],
                 ),
               ),
@@ -320,6 +343,23 @@ class WelcomeScreen extends StatelessWidget {
   // Card individual para as categorias
   // ClipRRect garante que o efeito de toque (ondinha) nunca vaze
   // para fora dos cantos arredondados do card.
+  Widget _buildNavTab({required String title, required VoidCallback onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Text(
+          title,
+          style: const TextStyle(
+            fontSize: 10,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildCategoryCard({
     String? imagePath,
     required String title,
@@ -391,7 +431,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: Image.asset(
                     'assets/imagens/imagem_artigo.png',
                     width: 100,
-                    height: 130,
+                    height: 150,
                     fit: BoxFit.cover,
                   ),
                 ),
