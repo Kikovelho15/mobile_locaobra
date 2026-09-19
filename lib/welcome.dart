@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:locaobra_mobile/Categorias/Equipamentos.dart';
+import 'package:locaobra_mobile/Categorias/Concretagem.dart';
+import 'package:locaobra_mobile/Categorias/Equipamentos_Pesados.dart';
 import 'package:locaobra_mobile/login_page.dart';
-import 'package:locaobra_mobile/Categorias/Ferramentas.dart';
-import 'package:locaobra_mobile/Categorias/Andaimes.dart';
-import 'package:locaobra_mobile/Categorias/Acesso.dart';
+import 'package:locaobra_mobile/Categorias/Ferramentas_Eletricas.dart';
+import 'package:locaobra_mobile/Categorias/Andaimes_e_Escadas.dart';
+import 'package:locaobra_mobile/Categorias/Acesso_e_Elevacao.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -76,16 +77,46 @@ class WelcomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
+
+              // 1.1 Linha de abas de navegação por categoria
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Row(
                   children: [
-                    _buildNavTab(title: 'Acesso e Elevação', onTap: () {}),
+                    _buildNavTab(
+                      title: 'Acesso e Elevação',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const AcessoPage()),
+                        );
+                      },
+                    ),
                     const SizedBox(width: 24),
-                    _buildNavTab(title: 'Concretagem', onTap: () {}),
+                    _buildNavTab(
+                      title: 'Concretagem',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const ConcretagemPage(),
+                          ),
+                        );
+                      },
+                    ),
                     const SizedBox(width: 24),
-                    _buildNavTab(title: 'Ferramentas Elétricas', onTap: () {}),
+                    _buildNavTab(
+                      title: 'Ferramentas Elétricas',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const FerramentasPage(),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -99,8 +130,11 @@ class WelcomeScreen extends StatelessWidget {
                   horizontal: 24.0,
                   vertical: 24.0,
                 ),
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 100, 100, 100),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: const AssetImage('assets/imagens/homebanner1.png'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,7 +157,7 @@ class WelcomeScreen extends StatelessWidget {
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.white70,
+                        color: Color.fromARGB(255, 255, 255, 255),
                         height: 1.4,
                       ),
                     ),
@@ -278,15 +312,16 @@ class WelcomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     _buildArticleCard(
-                      imagePath: 'assets/imagens/5_ferramentas.jpg',
-                      title: '5 Ferramentas essenciais para começar sua obra',
+                      imagePath: 'assets/imagens/img_art1.jpg',
+                      title:
+                          'Derrubar Parede e Integrar Ambientes: O Guia Sem Risco',
                       description:
                           'Descubra quais itens não podem faltar no seu canteiro para evitar atrasos...',
                       onTap: () {},
                     ),
                     const SizedBox(height: 12),
                     _buildArticleCard(
-                      imagePath: 'assets/imagens/economizar_andaimes.jpg',
+                      imagePath: 'assets/imagens/img_art2.jpg',
                       title: 'Como economizar no aluguel de andaimes',
                       description:
                           'Planejar o tempo de uso pode reduzir custos em até 30% no seu projeto final...',
@@ -373,8 +408,8 @@ class WelcomeScreen extends StatelessWidget {
           color: Colors.white,
           child: InkWell(
             onTap: onTap,
-            splashColor: Colors.orange.withOpacity(0.15),
-            highlightColor: Colors.orange.withOpacity(0.08),
+            splashColor: Colors.orange,
+            highlightColor: Colors.orange,
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 20),
               width: double.infinity,
@@ -429,9 +464,9 @@ class WelcomeScreen extends StatelessWidget {
                     bottomLeft: Radius.circular(12),
                   ),
                   child: Image.asset(
-                    'assets/imagens/imagem_artigo.png',
+                    'assets/imagens/img_art1.jpg',
                     width: 100,
-                    height: 150,
+                    height: 111,
                     fit: BoxFit.cover,
                   ),
                 ),

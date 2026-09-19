@@ -31,7 +31,9 @@ flutter:
     - assets/imagens/ferramentas.svg
     - assets/imagens/interroga.svg
     - assets/imagens/pesado.svg
-    - assets/imagens/imagem_artigo.png
+    - assets/imagens/img_art1.jpg
+    - assets/imagens/img_art2.jpg
+    - assets/imagens/homebanner1.png
 
 
     
