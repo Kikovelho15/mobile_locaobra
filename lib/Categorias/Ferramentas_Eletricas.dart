@@ -36,14 +36,16 @@ class FerramentasEletricasPage extends StatelessWidget {
   static const List<Produto> _produtos = [
     Produto(
       imagePath: '',
-      nome: 'Betoneira 400L',
+      nome: 'Martelo Demolidor Encaixe Hexagonal',
       descricao:
-          'A betoneira de 400 litros é das mais usadas no preparo de concreto. '
-          'Elétrica e fácil de transportar pela obra, produz uma massada em até 5 minutos — '
-          'rendendo até 15 massadas/hora (contra cerca de 2 manuais) e gerando um concreto 50% mais resistente.'
-          'Ideal para autônomos, engenheiros e construtoras, atende de reformas a grandes obras. Cada ciclo gera 270L de '
-          'concreto (massada traço 1:3:3), somando cerca de 4,65 m³ para garantir eficiência e agilidade.',
-      precoPorDia: .00,
+          'O Martelo Demolidor 2100W 62J 30kg 220V foi projetado '
+          'para demolições pesadas com alta eficiência e segurança.' 
+          'Com motor de controle eletrônico, mantém velocidade constante e '
+          'golpes consistentes a 960 IPM, mesmo nas aplicações mais exigentes.'
+          'Possui sistema antivibração nos punhos e contrapeso que reduz a emissão' 
+          'para 4,8 m/s², garantindo maior conforto em usos prolongados. Seu encaixe hexagonal de'
+          '1-1/8” (28 mm) assegura fixação firme dos acessórios para máxima produtividade no trabalho.',
+      precoPorDia: 45.00,
     ),
   ];
 

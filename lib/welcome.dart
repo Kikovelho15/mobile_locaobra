@@ -227,7 +227,7 @@ class WelcomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => const AndaimesPage(),
+                            builder: (_) => const AndaimesEEscadasPage(),
                           ),
                         );
                       },
@@ -249,7 +249,7 @@ class WelcomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => const EquipamentosPage(),
+                            builder: (_) => const EquipamentosPesadosPage(),
                           ),
                         );
                       },

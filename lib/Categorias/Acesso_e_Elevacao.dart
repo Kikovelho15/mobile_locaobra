@@ -35,14 +35,10 @@ class AcessoPage extends StatelessWidget {
   static const List<Produto> _produtos = [
     Produto(
       imagePath: '',
-      nome: 'Betoneira 400L',
+      nome: 'Guinchos de Coluna 350kg Aplicação',
       descricao:
-          'A betoneira de 400 litros é das mais usadas no preparo de concreto. '
-          'Elétrica e fácil de transportar pela obra, produz uma massada em até 5 minutos — '
-          'rendendo até 15 massadas/hora (contra cerca de 2 manuais) e gerando um concreto 50% mais resistente.'
-          'Ideal para autônomos, engenheiros e construtoras, atende de reformas a grandes obras. Cada ciclo gera 270L de '
-          'concreto (massada traço 1:3:3), somando cerca de 4,65 m³ para garantir eficiência e agilidade.',
-      precoPorDia: 15.00,
+          'Guinchos de Coluna 350kg Aplicação',
+      precoPorDia: 35.00,
     ),
   ];
 
@@ -96,11 +92,11 @@ class AcessoPage extends StatelessWidget {
                       title: 'Ferramentas Elétricas',
                       onTap: () {
                         Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const FerramentasEletricasPage()
-                          
-                        ));
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const FerramentasEletricasPage(),
+                          ),
+                        );
                       },
                     ),
                   ],
