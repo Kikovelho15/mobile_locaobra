@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:locaobra_mobile/Categorias/Concretagem.dart';
+import 'package:locaobra_mobile/Categorias/Ferramentas_Eletricas.dart';
 import 'package:locaobra_mobile/welcome.dart';
 
 // Modelo simples de produto, usado só para preencher os cards da lista.
@@ -26,7 +28,7 @@ class AcessoPage extends StatelessWidget {
 
   // Nome desta categoria, usado no breadcrumb e para destacar a aba certa
   // na linha de navegação.
-  static const String _categoriaAtual = 'Aceso e Elevação';
+  static const String _categoriaAtual = 'Acesso e Elevação';
 
   // Lista de produtos dessa categoria.
   // Substituir por dados reais (de uma API, banco local, etc).
@@ -84,13 +86,23 @@ class AcessoPage extends StatelessWidget {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => const AcessoPage(),
+                            builder: (_) => const ConcretagemPage(),
                           ),
                         );
                       },
                     ),
                     const SizedBox(width: 24),
-                    _buildNavTab(title: 'Ferramentas Elétricas', onTap: () {}),
+                    _buildNavTab(
+                      title: 'Ferramentas Elétricas',
+                      onTap: () {
+                        Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const FerramentasEletricasPage()
+                          
+                        ));
+                      },
+                    ),
                   ],
                 ),
               ),

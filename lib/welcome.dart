@@ -112,7 +112,7 @@ class WelcomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => const FerramentasPage(),
+                            builder: (_) => const FerramentasEletricasPage(),
                           ),
                         );
                       },
@@ -215,7 +215,7 @@ class WelcomeScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => const FerramentasPage(),
+                            builder: (_) => const FerramentasEletricasPage(),
                           ),
                         );
                       },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:locaobra_mobile/Categorias/Ferramentas_Eletricas.dart';
 import 'package:locaobra_mobile/welcome.dart';
 import 'package:locaobra_mobile/Categorias/Acesso_e_Elevacao.dart';
 
@@ -41,7 +42,7 @@ class ConcretagemPage extends StatelessWidget {
           'rendendo até 15 massadas/hora (contra cerca de 2 manuais) e gerando um concreto 50% mais resistente.'
           'Ideal para autônomos, engenheiros e construtoras, atende de reformas a grandes obras. Cada ciclo gera 270L de '
           'concreto (massada traço 1:3:3), somando cerca de 4,65 m³ para garantir eficiência e agilidade.',
-      precoPorDia: 15.00,
+      precoPorDia: .00,
     ),
   ];
 
@@ -91,7 +92,17 @@ class ConcretagemPage extends StatelessWidget {
                       },
                     ),
                     const SizedBox(width: 24),
-                    _buildNavTab(title: 'Ferramentas Elétricas', onTap: () {}),
+                    _buildNavTab(
+                      title: 'Ferramentas Elétricas',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const FerramentasEletricasPage(),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
