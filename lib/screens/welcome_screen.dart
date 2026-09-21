@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:locaobra_mobile/Categorias/Concretagem.dart';
-import 'package:locaobra_mobile/Categorias/Equipamentos_Pesados.dart';
-import 'package:locaobra_mobile/login_page.dart';
-import 'package:locaobra_mobile/Categorias/Ferramentas_Eletricas.dart';
-import 'package:locaobra_mobile/Categorias/Andaimes_e_Escadas.dart';
-import 'package:locaobra_mobile/Categorias/Acesso_e_Elevacao.dart';
+import 'package:locaobra_mobile/Categorias/concretagem.dart';
+import 'package:locaobra_mobile/Categorias/equipamentos_pesados.dart';
+import 'package:locaobra_mobile/auth/login_page.dart';
+import 'package:locaobra_mobile/Categorias/ferramentas_eletricas.dart';
+import 'package:locaobra_mobile/Categorias/andaimes_e_escadas.dart';
+import 'package:locaobra_mobile/Categorias/acesso_e_elevacao.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -30,7 +30,7 @@ class WelcomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/imagens/Logo_LOCAOBRA.png',
+                      'assets/Logo_LOCAOBRA.png',
                       width: 160,
                       height: 90,
                       fit: BoxFit.contain,
@@ -132,7 +132,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: const AssetImage('assets/imagens/homebanner1.png'),
+                    image: const AssetImage('assets/homebanner1.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -209,7 +209,7 @@ class WelcomeScreen extends StatelessWidget {
 
                     // Lista de Cards de Categorias
                     _buildCategoryCard(
-                      imagePath: 'assets/imagens/ferramentas.svg',
+                      imagePath: 'assets/ferramentas.svg',
                       title: 'Ferramentas Elétricas',
                       onTap: () {
                         Navigator.push(
@@ -221,7 +221,7 @@ class WelcomeScreen extends StatelessWidget {
                       },
                     ),
                     _buildCategoryCard(
-                      imagePath: 'assets/imagens/andaimes.svg',
+                      imagePath: 'assets/andaimes.svg',
                       title: 'Andaimes e Escadas',
                       onTap: () {
                         Navigator.push(
@@ -233,7 +233,7 @@ class WelcomeScreen extends StatelessWidget {
                       },
                     ),
                     _buildCategoryCard(
-                      imagePath: 'assets/imagens/elevacao.svg',
+                      imagePath: 'assets/elevacao.svg',
                       title: 'Acesso e Elevação',
                       onTap: () {
                         Navigator.push(
@@ -243,7 +243,7 @@ class WelcomeScreen extends StatelessWidget {
                       },
                     ),
                     _buildCategoryCard(
-                      imagePath: 'assets/imagens/pesado.svg',
+                      imagePath: 'assets/pesado.svg',
                       title: 'Equipamentos Pesados',
                       onTap: () {
                         Navigator.push(
@@ -312,7 +312,7 @@ class WelcomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     _buildArticleCard(
-                      imagePath: 'assets/imagens/img_art1.jpg',
+                      imagePath: 'assets/img_art1.jpg',
                       title:
                           'Derrubar Parede e Integrar Ambientes: O Guia Sem Risco',
                       description:
@@ -321,7 +321,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     _buildArticleCard(
-                      imagePath: 'assets/imagens/img_art2.jpg',
+                      imagePath: 'assets/img_art2(1).png',
                       title: 'Como economizar no aluguel de andaimes',
                       description:
                           'Planejar o tempo de uso pode reduzir custos em até 30% no seu projeto final...',
@@ -464,9 +464,9 @@ class WelcomeScreen extends StatelessWidget {
                     bottomLeft: Radius.circular(12),
                   ),
                   child: Image.asset(
-                    'assets/imagens/img_art1.jpg',
-                    width: 100,
-                    height: 111,
+                    imagePath,
+                    width: 130,
+                    height: 140,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -474,7 +474,7 @@ class WelcomeScreen extends StatelessWidget {
                 // Texto à direita
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -483,27 +483,27 @@ class WelcomeScreen extends StatelessWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
-                            fontSize: 14,
+                            fontSize: 13,
                             fontWeight: FontWeight.w600,
                             color: Colors.black87,
                           ),
                         ),
-                        const SizedBox(height: 6),
+                        const SizedBox(height: 4),
                         Text(
                           description,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: 11,
                             color: Colors.grey.shade600,
                             height: 1.3,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 6),
                         const Text(
                           'Ler Artigo',
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 12,
                             fontWeight: FontWeight.bold,
                             color: Colors.orange,
                           ),
@@ -540,7 +540,7 @@ class WelcomeScreen extends StatelessWidget {
             iconColor: Colors.orange,
             collapsedIconColor: Colors.orange,
             leading: SvgPicture.asset(
-              'assets/imagens/interroga.svg',
+              'assets/interroga.svg',
               width: 22,
               height: 22,
             ),

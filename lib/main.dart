@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:locaobra_mobile/welcome.dart';
+import 'package:locaobra_mobile/screens/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());

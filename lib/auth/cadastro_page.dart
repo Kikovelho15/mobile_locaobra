@@ -1,40 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:locaobra_mobile/cadastro_page.dart';
+import 'package:locaobra_mobile/auth/login_page.dart';
 import 'package:locaobra_mobile/home_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class CadastroPage extends StatefulWidget {
+  const CadastroPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<CadastroPage> createState() => _CadastroPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _CadastroPageState extends State<CadastroPage> {
   final _formKey = GlobalKey<FormState>();
+  final _nomeController = TextEditingController();
   final _emailController = TextEditingController();
   final _senhaController = TextEditingController();
+  final _confirmarSenhaController = TextEditingController();
 
   bool _senhaVisivel = false;
+  bool _confirmarSenhaVisivel = false;
   bool _carregando = false;
 
   @override
   void dispose() {
+    _nomeController.dispose();
     _emailController.dispose();
     _senhaController.dispose();
+    _confirmarSenhaController.dispose();
     super.dispose();
   }
 
-  void _entrar() async {
+  void _cadastrar() async {
     if (!_formKey.currentState!.validate()) return;
 
     setState(() => _carregando = true);
 
-    // Ex: await AuthService.login(_emailController.text, _senhaController.text);
+    // TODO: substitua pela sua chamada real de cadastro
+    // Ex: await AuthService.cadastrar(
+    //   nome: _nomeController.text,
+    //   email: _emailController.text,
+    //   senha: _senhaController.text,
+    // );
     await Future.delayed(const Duration(seconds: 1));
 
     if (!mounted) return;
     setState(() => _carregando = false);
 
+    // Depois de cadastrar, leva direto para a Home
+    // (pushReplacement para não deixar o cadastro na pilha de "voltar")
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (_) => const HomePage()),
@@ -63,25 +75,10 @@ class _LoginPageState extends State<LoginPage> {
                   alignment: Alignment.centerLeft,
                 ),
 
-                const SizedBox(height: 4),
-
-                // Logo
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Align(alignment: Alignment.centerLeft),
-                    Image.asset(
-                      'assets/imagens/Logo_LOCAOBRA.png',
-                      width: 160,
-                      height: 100,
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 32),
+                const SizedBox(height: 16),
 
                 const Text(
-                  'Login',
+                  'Criar conta',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -92,11 +89,36 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 8),
 
                 Text(
-                  'Entre com sua conta para continuar.',
+                  'Preencha os dados abaixo para começar.',
                   style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
                 ),
 
-                const SizedBox(height: 32),
+                const SizedBox(height: 28),
+
+                // Campo nome
+                const Text(
+                  'Nome completo',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                ),
+                const SizedBox(height: 8),
+                TextFormField(
+                  controller: _nomeController,
+                  decoration: InputDecoration(
+                    hintText: 'Seu nome',
+                    prefixIcon: const Icon(Icons.person_outline),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Informe seu nome';
+                    }
+                    return null;
+                  },
+                ),
+
+                const SizedBox(height: 20),
 
                 // Campo e-mail
                 const Text(
@@ -155,7 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Informe sua senha';
+                      return 'Informe uma senha';
                     }
                     if (value.length < 6) {
                       return 'A senha deve ter pelo menos 6 caracteres';
@@ -164,20 +186,48 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
 
-                const SizedBox(height: 8),
+                const SizedBox(height: 20),
 
-                // Esqueci minha senha
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () {},
-                    child: const Text('Esqueci minha senha'),
+                // Campo confirmar senha
+                const Text(
+                  'Confirmar senha',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                ),
+                const SizedBox(height: 8),
+                TextFormField(
+                  controller: _confirmarSenhaController,
+                  obscureText: !_confirmarSenhaVisivel,
+                  decoration: InputDecoration(
+                    hintText: '••••••••',
+                    prefixIcon: const Icon(Icons.lock_outline),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _confirmarSenhaVisivel
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined,
+                      ),
+                      onPressed: () {
+                        setState(
+                          () =>
+                              _confirmarSenhaVisivel = !_confirmarSenhaVisivel,
+                        );
+                      },
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
+                  validator: (value) {
+                    if (value != _senhaController.text) {
+                      return 'As senhas não coincidem';
+                    }
+                    return null;
+                  },
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: 28),
 
-                // Botão Entrar
+                // Botão Criar conta
                 SizedBox(
                   width: double.infinity,
                   height: 52,
@@ -190,7 +240,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       elevation: 0,
                     ),
-                    onPressed: _carregando ? null : _entrar,
+                    onPressed: _carregando ? null : _cadastrar,
                     child: _carregando
                         ? const SizedBox(
                             width: 22,
@@ -201,7 +251,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           )
                         : const Text(
-                            'Entrar',
+                            'Criar conta',
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
@@ -212,28 +262,25 @@ class _LoginPageState extends State<LoginPage> {
 
                 const SizedBox(height: 24),
 
-                // Link para cadastro
+                // Link para login
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Não tem uma conta?'),
+                      const Text('Já tem uma conta?'),
                       TextButton(
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const CadastroPage(),
+                              builder: (_) => const LoginPage(),
                             ),
                           );
                         },
                         child: const Text(
-                          'Criar conta',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600),
-                          
+                          'Entrar',
+                          style: TextStyle(fontWeight: FontWeight.w600),
                         ),
-                        
                       ),
                     ],
                   ),

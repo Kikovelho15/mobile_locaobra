@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:locaobra_mobile/Categorias/Acesso_e_Elevacao.dart';
+import 'package:locaobra_mobile/Categorias/acesso_e_elevacao.dart';
 import 'package:locaobra_mobile/Categorias/Concretagem.dart';
 import 'package:locaobra_mobile/Categorias/Ferramentas_Eletricas.dart';
-import 'package:locaobra_mobile/welcome.dart';
+import 'package:locaobra_mobile/screens/welcome_screen.dart';
 
 // Modelo simples de produto, usado só para preencher os cards da lista.
 // Depois, o ideal é isso vir de uma API/banco de dados em vez de ficar

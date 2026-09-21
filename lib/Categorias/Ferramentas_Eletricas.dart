@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:locaobra_mobile/welcome.dart';
-import 'package:locaobra_mobile/Categorias/Acesso_e_Elevacao.dart';
+import 'package:locaobra_mobile/screens/welcome_screen.dart';
+import 'package:locaobra_mobile/Categorias/acesso_e_elevacao.dart';
 import 'package:locaobra_mobile/Categorias/Concretagem.dart';
 
 
