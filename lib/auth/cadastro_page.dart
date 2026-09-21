@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:locaobra_mobile/auth/login_page.dart';
-import 'package:locaobra_mobile/home_page.dart';
+import 'package:locaobra_mobile/screens/home_screen.dart';
 
 class CadastroPage extends StatefulWidget {
   const CadastroPage({super.key});

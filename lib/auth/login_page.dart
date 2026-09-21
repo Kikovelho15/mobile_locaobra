@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:locaobra_mobile/auth/cadastro_page.dart';
-import 'package:locaobra_mobile/home_page.dart';
+import 'package:locaobra_mobile/screens/home_screen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -71,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Align(alignment: Alignment.centerLeft),
                     Image.asset(
-                      'assets/Logo_LOCAOBRA.png',
+                      'assets/imagens/Logo_LOCAOBRA.png',
                       width: 160,
                       height: 100,
                     ),

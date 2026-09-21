@@ -38,7 +38,7 @@ class Artigo {
 const List<Artigo> artigosDisponiveis = [
   Artigo(
     slug: 'derrubar-parede-e-integrar-ambientes',
-    imagePath: 'assets/img_art1.jpg',
+    imagePath: 'assets/imagens/img_art1.jpg',
     titulo: 'Derrubar Parede e Integrar Ambientes: O Guia Sem Risco',
     resumo:
         'Descubra quais itens não podem faltar no seu canteiro para evitar atrasos...',

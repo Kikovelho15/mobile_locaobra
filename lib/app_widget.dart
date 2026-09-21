@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:locaobra_mobile/home_page.dart';
+import 'package:locaobra_mobile/screens/home_screen.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});

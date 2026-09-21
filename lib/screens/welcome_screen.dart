@@ -6,6 +6,9 @@ import 'package:locaobra_mobile/auth/login_page.dart';
 import 'package:locaobra_mobile/Categorias/ferramentas_eletricas.dart';
 import 'package:locaobra_mobile/Categorias/andaimes_e_escadas.dart';
 import 'package:locaobra_mobile/Categorias/acesso_e_elevacao.dart';
+import 'package:locaobra_mobile/models/artigo.dart';
+import 'package:locaobra_mobile/Dicas/dicas_locaobra_page.dart';
+import 'package:locaobra_mobile/Dicas/artigo_detalhes_page.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -30,7 +33,7 @@ class WelcomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Image.asset(
-                      'assets/Logo_LOCAOBRA.png',
+                      'assets/imagens/Logo_LOCAOBRA.png',
                       width: 160,
                       height: 90,
                       fit: BoxFit.contain,
@@ -132,7 +135,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: const AssetImage('assets/homebanner1.png'),
+                    image: const AssetImage('assets/imagens/homebanner1.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -209,7 +212,7 @@ class WelcomeScreen extends StatelessWidget {
 
                     // Lista de Cards de Categorias
                     _buildCategoryCard(
-                      imagePath: 'assets/ferramentas.svg',
+                      imagePath: 'assets/imagens/ferramentas.svg',
                       title: 'Ferramentas Elétricas',
                       onTap: () {
                         Navigator.push(
@@ -221,7 +224,7 @@ class WelcomeScreen extends StatelessWidget {
                       },
                     ),
                     _buildCategoryCard(
-                      imagePath: 'assets/andaimes.svg',
+                      imagePath: 'assets/imagens/andaimes.svg',
                       title: 'Andaimes e Escadas',
                       onTap: () {
                         Navigator.push(
@@ -233,7 +236,7 @@ class WelcomeScreen extends StatelessWidget {
                       },
                     ),
                     _buildCategoryCard(
-                      imagePath: 'assets/elevacao.svg',
+                      imagePath: 'assets/imagens/elevacao.svg',
                       title: 'Acesso e Elevação',
                       onTap: () {
                         Navigator.push(
@@ -243,7 +246,7 @@ class WelcomeScreen extends StatelessWidget {
                       },
                     ),
                     _buildCategoryCard(
-                      imagePath: 'assets/pesado.svg',
+                      imagePath: 'assets/imagens/pesado.svg',
                       title: 'Equipamentos Pesados',
                       onTap: () {
                         Navigator.push(
@@ -275,7 +278,14 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const DicasLocaObraPage(),
+                          ),
+                        );
+                      },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
                         minimumSize: Size.zero,
@@ -312,20 +322,35 @@ class WelcomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     _buildArticleCard(
-                      imagePath: 'assets/img_art1.jpg',
-                      title:
-                          'Derrubar Parede e Integrar Ambientes: O Guia Sem Risco',
-                      description:
-                          'Descubra quais itens não podem faltar no seu canteiro para evitar atrasos...',
-                      onTap: () {},
+                      imagePath: artigosDisponiveis[0].imagePath,
+                      title: artigosDisponiveis[0].titulo,
+                      description: artigosDisponiveis[0].resumo,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => ArtigoDetalhesPage(
+                              artigo: artigosDisponiveis[0],
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     const SizedBox(height: 12),
                     _buildArticleCard(
-                      imagePath: 'assets/img_art2(1).png',
-                      title: 'Como economizar no aluguel de andaimes',
-                      description:
-                          'Planejar o tempo de uso pode reduzir custos em até 30% no seu projeto final...',
-                      onTap: () {},
+                      imagePath: artigosDisponiveis[1].imagePath,
+                      title: artigosDisponiveis[1].titulo,
+                      description: artigosDisponiveis[1].resumo,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => ArtigoDetalhesPage(
+                              artigo: artigosDisponiveis[1],
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -540,7 +565,7 @@ class WelcomeScreen extends StatelessWidget {
             iconColor: Colors.orange,
             collapsedIconColor: Colors.orange,
             leading: SvgPicture.asset(
-              'assets/interroga.svg',
+              'assets/imagens/interroga.svg',
               width: 22,
               height: 22,
             ),

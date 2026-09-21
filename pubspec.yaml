@@ -24,17 +24,17 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/Logo_LOCAOBRA.png
-    - assets/andaimes.svg
-    - assets/dicas.svg
-    - assets/elevacao.svg
-    - assets/ferramentas.svg
-    - assets/interroga.svg
-    - assets/pesado.svg
-    - assets/img_art1.jpg
-    - assets/img_art2.jpg
-    - assets/img_art2(1).png
-    - assets/homebanner1.png
+    - assets/imagens/Logo_LOCAOBRA.png
+    - assets/imagens/andaimes.svg
+    - assets/imagens/dicas.svg
+    - assets/imagens/elevacao.svg
+    - assets/imagens/ferramentas.svg
+    - assets/imagens/interroga.svg
+    - assets/imagens/pesado.svg
+    - assets/imagens/img_art1.jpg
+    - assets/imagens/img_art2.jpg
+    - assets/imagens/img_art2(1).png
+    - assets/imagens/homebanner1.png
 
 
     
