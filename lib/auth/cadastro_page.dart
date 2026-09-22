@@ -49,7 +49,7 @@ class _CadastroPageState extends State<CadastroPage> {
     // (pushReplacement para não deixar o cadastro na pilha de "voltar")
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (_) => const HomePage()),
+      MaterialPageRoute(builder: (_) => const HomeScreen()),
     );
   }
 
