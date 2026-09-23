@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:locaobra_mobile/Categorias/catalogo_page.dart';
 import 'package:locaobra_mobile/screens/welcome_screen.dart';
-import 'package:locaobra_mobile/Categorias/catalogo_page.dart'; // Ajuste o caminho se necessário
 
 // Definição do GoRouter com as rotas
 final GoRouter _router = GoRouter(
@@ -19,15 +19,17 @@ final GoRouter _router = GoRouter(
 );
 
 void main() {
-  runApp(const HomeScreenPage());
+  runApp(const LocaObraApp());
 }
 
-class HomeScreenPage extends StatelessWidget {
-  const HomeScreenPage({super.key});
+// Widget raiz do aplicativo: configura o MaterialApp.router com as rotas
+// definidas acima. Não confundir com HomeScreenPage — essa classe aqui é
+// só o "ponto de partida" do app, não uma tela em si.
+class LocaObraApp extends StatelessWidget {
+  const LocaObraApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Altere para MaterialApp.router para aceitar o _router
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: _router,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:locaobra_mobile/auth/cadastro_page.dart';
+import 'package:locaobra_mobile/auth/auth_state.dart';
 import 'package:locaobra_mobile/screens/home_screen.dart';
+import 'package:locaobra_mobile/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -17,6 +19,8 @@ class _LoginPageState extends State<LoginPage> {
   bool _senhaVisivel = false;
   bool _carregando = false;
 
+  final AuthService _authService = AuthService();
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -29,11 +33,27 @@ class _LoginPageState extends State<LoginPage> {
 
     setState(() => _carregando = true);
 
-    // Ex: await AuthService.login(_emailController.text, _senhaController.text);
-    await Future.delayed(const Duration(seconds: 1));
+    final resultado = await _authService.login(
+      _emailController.text.trim(),
+      _senhaController.text,
+    );
 
     if (!mounted) return;
     setState(() => _carregando = false);
+
+    if (!resultado.sucesso) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(resultado.mensagemErro ?? 'Não foi possível entrar.'),
+          backgroundColor: Colors.red.shade600,
+        ),
+      );
+      return;
+    }
+
+    // Atualiza o estado global de login — o cabeçalho (ícone + nome do
+    // usuário) em toda a Home reage sozinho a essa mudança.
+    AuthState.login(resultado.nome ?? _emailController.text.trim());
 
     Navigator.pushReplacement(
       context,
