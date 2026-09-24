@@ -199,7 +199,7 @@ class _ProdutoDetalhesPageState extends State<ProdutoDetalhesPage> {
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    // Todo: seguir para o checkout/pagamento
+                    // TODO: seguir para o checkout/pagamento
                   },
                   icon: const Icon(Icons.shopping_cart),
                   label: const Text('Comprar agora'),
@@ -221,7 +221,7 @@ class _ProdutoDetalhesPageState extends State<ProdutoDetalhesPage> {
                 width: double.infinity,
                 child: OutlinedButton.icon(
                   onPressed: () {
-                    // Todo: adicionar o produto ao carrinho
+                    // TODO: adicionar o produto ao carrinho
                   },
                   icon: const Icon(Icons.add, color: Colors.orange),
                   label: const Text(
@@ -254,7 +254,10 @@ class _ProdutoDetalhesPageState extends State<ProdutoDetalhesPage> {
             text: '$rotulo ',
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
-          TextSpan(text: valor, style: const TextStyle(color: Colors.orange)),
+          TextSpan(
+            text: valor,
+            style: const TextStyle(color: Colors.orange),
+          ),
         ],
       ),
     );
@@ -273,7 +276,10 @@ class _ProdutoDetalhesPageState extends State<ProdutoDetalhesPage> {
           );
         }),
         const SizedBox(width: 6),
-        const Text('ativo', style: TextStyle(fontSize: 12, color: Colors.grey)),
+        const Text(
+          'ativo',
+          style: TextStyle(fontSize: 12, color: Colors.grey),
+        ),
       ],
     );
   }
@@ -325,9 +331,7 @@ class _ProdutoDetalhesPageState extends State<ProdutoDetalhesPage> {
         width: 40,
         height: 40,
         alignment: Alignment.center,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade300),
-        ),
+        decoration: BoxDecoration(border: Border.all(color: Colors.grey.shade300)),
         child: Icon(icon, size: 18, color: Colors.black87),
       ),
     );

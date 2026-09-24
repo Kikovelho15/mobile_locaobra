@@ -214,7 +214,7 @@ class HomeScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.black87,
                         height: 1.2,
                       ),
                     ),
@@ -225,7 +225,7 @@ class HomeScreen extends StatelessWidget {
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 14,
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: Colors.black87,
                         height: 1.4,
                       ),
                     ),

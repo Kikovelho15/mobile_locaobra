@@ -1,9 +1,5 @@
 // Modelo de produto compartilhado por todas as páginas de categoria
 // (Ferramentas Elétricas, Concretagem, Acesso e Elevação, etc).
-//
-// Ficando em um arquivo único, evita erro de "ambiguous import" quando
-// duas páginas de categoria (que já se importam entre si por causa das
-// abas de navegação) tentassem definir sua própria classe Produto.
 class Produto {
   // Fotos do produto (a primeira é a foto principal/capa).
   final List<String> imagePaths;
@@ -12,11 +8,11 @@ class Produto {
   final String categoria;
   final int quantidadeDisponivel;
   final double precoPorDia;
-  final double avaliacao; // de 0 a 5, usado para desenhar as estrelinhas
+  final double avaliacao; // de 0 a 5
   // Especificações técnicas, em pares de rótulo/valor
-  // (ex: {'Tambor': 'Aço 2.66mm', 'Voltagem': 'Bivolt (127V / 220V)'})
   final Map<String, String> especificacoes;
 
+  // CONSTRUTOR PRINCIPAL (era o que estava faltando)
   const Produto({
     required this.imagePaths,
     required this.nome,
@@ -24,10 +20,32 @@ class Produto {
     required this.categoria,
     required this.quantidadeDisponivel,
     required this.precoPorDia,
-    this.avaliacao = 5.0,
-    this.especificacoes = const {},
+    required this.avaliacao,
+    required this.especificacoes,
   });
 
-  // Atalho para pegar a foto principal (usada nos cards da listagem)
-  String get imagemPrincipal => imagePaths.first;
+  // Cria o Produto a partir do JSON da API
+  factory Produto.fromJson(Map<String, dynamic> json) {
+    return Produto(
+      // Todo: troque as chaves pelas que a sua API realmente devolve
+      imagePaths: (json['imagens'] as List? ?? [])
+          .map((e) => e.toString())
+          .toList(),
+      nome: json['nome']?.toString() ?? '',
+      descricao: json['descricao']?.toString() ?? '',
+      categoria: json['categoria']?.toString() ?? '',
+      // tryParse aceita número ou texto ("6" ou 6) sem quebrar
+      quantidadeDisponivel:
+          int.tryParse('${json['quantidade_disponivel']}') ?? 0,
+      precoPorDia: double.tryParse('${json['valor_diaria']}') ?? 0,
+      avaliacao: double.tryParse('${json['avaliacao']}') ?? 0,
+      especificacoes: (json['especificacoes'] as Map? ?? {})
+          .map((k, v) => MapEntry(k.toString(), v.toString())),
+    );
+  }
+
+  // Foto principal (usada nos cards da listagem).
+  // Devolve null se o produto vier da API sem foto, para não dar erro.
+  String? get imagemPrincipal =>
+      imagePaths.isEmpty ? null : imagePaths.first;
 }

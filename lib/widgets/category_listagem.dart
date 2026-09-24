@@ -125,6 +125,35 @@ class CategoryListagem extends StatelessWidget {
     );
   }
 
+  // Foto do card: aceita asset local ou URL da API e trata produto sem
+  // foto (imagemPrincipal nulo) ou imagem que falhou ao carregar.
+  Widget _buildFoto(String? path) {
+    final placeholder = Container(
+      color: Colors.grey.shade200,
+      child: Icon(
+        Icons.image_not_supported_outlined,
+        color: Colors.grey.shade500,
+      ),
+    );
+
+    if (path == null || path.isEmpty) return placeholder;
+
+    if (path.startsWith('http')) {
+      return Image.network(
+        path,
+        fit: BoxFit.cover,
+        width: double.infinity,
+        errorBuilder: (_, _, _) => placeholder,
+      );
+    }
+    return Image.asset(
+      path,
+      fit: BoxFit.cover,
+      width: double.infinity,
+      errorBuilder: (_, _, _) => placeholder,
+    );
+  }
+
   // Card individual de produto. Ao tocar, abre a tela de detalhes.
   Widget _buildProductCard(BuildContext context, Produto produto) {
     return ClipRRect(
@@ -149,11 +178,7 @@ class CategoryListagem extends StatelessWidget {
               children: [
                 AspectRatio(
                   aspectRatio: 1,
-                  child: Image.asset(
-                    produto.imagemPrincipal,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                  ),
+                  child: _buildFoto(produto.imagemPrincipal),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(10),
@@ -190,7 +215,7 @@ class CategoryListagem extends StatelessWidget {
                           children: [
                             TextSpan(
                               text:
-                                  'R\$ ${produto.precoPorDia.toStringAsFixed(2)}',
+                                  'R\$ ${produto.precoPorDia.toStringAsFixed(2).replaceAll('.', ',')}',
                               style: const TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
